@@ -1,24 +1,41 @@
-import { Button, Text } from '@react-navigation/elements';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from "react-native";
+import { ThemedView } from "../../components/ThemedView";
+import { Text } from "../../components/Text";
+import { Button } from "../../components/Button";
+import { Icon } from "../../components/Icon";
 
 export function Home() {
   return (
-    <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Text>Open up 'src/App.tsx' to start working on your app!</Text>
-      <Button screen="Profile" params={{ user: 'jane' }}>
-        Go to Profile
+    <ThemedView style={styles.container}>
+      <Text>Tela Inicial</Text>
+      <Text>
+        Abra o arquivo 'src/App.tsx' para começar a trabalhar no seu app!
+      </Text>
+
+      <Button
+        screen="Profile"
+        params={{ user: "carlos" }}
+        iconLeft={<Icon type="Feather" name="user" usePrimaryColor />}
+      >
+        Ir para o Perfil
       </Button>
-      <Button screen="Settings">Go to Settings</Button>
-    </View>
+
+      <Button
+        screen="Settings"
+        iconRight={
+          <Icon type="Ionicons" name="settings-outline" usePrimaryColor />
+        }
+      >
+        Ir para as Configurações
+      </Button>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 20,
     gap: 10,
   },
 });

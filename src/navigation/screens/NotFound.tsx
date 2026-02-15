@@ -1,20 +1,21 @@
-import { Text, Button } from '@react-navigation/elements';
-import { StyleSheet, View } from 'react-native';
+import { Text, Button } from "@react-navigation/elements";
+import { StyleSheet } from "react-native";
+import { ThemedView } from "../../components/ThemedView";
 
 export function NotFound() {
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <Text>404</Text>
-      <Button screen="HomeTabs">Go to Home</Button>
-    </View>
+      <Button screen="HomeTabs">Ir para a Tela Inicial</Button>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     gap: 10,
   },
 });

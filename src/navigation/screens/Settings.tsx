@@ -1,23 +1,25 @@
-import { Text } from '@react-navigation/elements';
-import { StyleSheet, View } from 'react-native';
+import { Text } from "@react-navigation/elements";
+import { StyleSheet } from "react-native";
+
+import { ThemedView } from "../../components/ThemedView";
 
 export function Settings() {
   return (
-    <View style={styles.container}>
-      <Text>Settings Screen</Text>
-    </View>
+    <ThemedView style={styles.container}>
+      <Text>Tela de Configurações</Text>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     gap: 10,
   },
   row: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 10,
   },
 });
