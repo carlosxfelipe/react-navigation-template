@@ -10,7 +10,7 @@ type IoniconName = keyof typeof Ionicons.glyphMap;
 type BaseIconProps = {
   size?: number;
   color?: string;
-  usePrimaryColor?: boolean;
+  primary?: boolean;
   style?: any;
 };
 
@@ -33,7 +33,7 @@ export function Icon({
   name,
   size = 20,
   color,
-  usePrimaryColor,
+  primary,
   style,
 }: IconProps) {
   const colorScheme = useColorScheme();
@@ -41,11 +41,7 @@ export function Icon({
 
   const iconColor =
     color ??
-    (usePrimaryColor
-      ? colors.primary
-      : colorScheme === "dark"
-        ? "#fff"
-        : "#000");
+    (primary ? colors.primary : colorScheme === "dark" ? "#fff" : "#000");
 
   switch (type) {
     case "MaterialIcons":

@@ -16,6 +16,7 @@ import { Text } from "./Text";
 type ButtonBaseProps = Omit<PlatformPressableProps, "children"> & {
   variant?: "plain" | "tinted" | "filled";
   color?: string;
+  shape?: "pill" | "rounded" | "sharp";
   children: string | string[];
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
@@ -24,16 +25,14 @@ type ButtonBaseProps = Omit<PlatformPressableProps, "children"> & {
 type ButtonLinkProps<ParamList extends ReactNavigation.RootParamList> =
   LinkProps<ParamList> & Omit<ButtonBaseProps, "onPress">;
 
-const BUTTON_RADIUS = 40;
-
 export function Button<ParamList extends ReactNavigation.RootParamList>(
-  props: ButtonLinkProps<ParamList>
+  props: ButtonLinkProps<ParamList>,
 ): React.JSX.Element;
 
 export function Button(props: ButtonBaseProps): React.JSX.Element;
 
 export function Button<ParamList extends ReactNavigation.RootParamList>(
-  props: ButtonBaseProps | ButtonLinkProps<ParamList>
+  props: ButtonBaseProps | ButtonLinkProps<ParamList>,
 ) {
   if ("screen" in props || "action" in props) {
     // @ts-expect-error: This is already type-checked by the prop types
@@ -59,6 +58,7 @@ function ButtonLink<ParamList extends ReactNavigation.RootParamList>({
 function ButtonBase({
   variant = "tinted",
   color: customColor,
+  shape = "pill",
   android_ripple,
   style,
   children,
@@ -90,17 +90,18 @@ function ButtonBase({
       break;
   }
 
+  const borderRadius = shape === "pill" ? 40 : shape === "rounded" ? 8 : 0;
+
   return (
     <PlatformPressable
       {...rest}
       android_ripple={{
-        radius: BUTTON_RADIUS,
         color: Color(textColor).fade(0.85).string(),
         ...android_ripple,
       }}
       pressOpacity={Platform.OS === "ios" ? undefined : 1}
       hoverEffect={{ color: textColor }}
-      style={[{ backgroundColor }, styles.button, style]}
+      style={[{ backgroundColor, borderRadius }, styles.button, style]}
     >
       <View style={styles.content}>
         {iconLeft && <View style={styles.icon}>{iconLeft}</View>}
@@ -118,8 +119,7 @@ function ButtonBase({
 const styles = StyleSheet.create({
   button: {
     paddingHorizontal: 24,
-    paddingVertical: 10,
-    borderRadius: BUTTON_RADIUS,
+    paddingVertical: 12,
     borderCurve: "continuous",
   },
   content: {
@@ -133,9 +133,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 14,
-    lineHeight: 20,
-    letterSpacing: 0.1,
+    fontSize: 16,
+    lineHeight: 22,
+    fontWeight: "600",
+    letterSpacing: 0.2,
     textAlign: "center",
   },
 });
