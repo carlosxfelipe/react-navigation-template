@@ -4,14 +4,14 @@ import { fonts } from "./fonts";
 export const DarkTheme: Theme = {
   dark: true,
   colors: {
-    primary: "rgb(10, 132, 255)",
-    background: "rgb(1, 1, 1)",
-    card: "rgb(18, 18, 18)",
-    header: "rgb(18, 18, 18)",
-    tabBar: "rgb(18, 18, 18)",
-    text: "rgb(229, 229, 231)",
-    border: "rgb(39, 39, 41)",
-    notification: "rgb(255, 69, 58)",
+    primary: "#0A84FF",
+    background: "#010101",
+    card: "#121212",
+    header: "#121212",
+    tabBar: "#121212",
+    text: "#E5E5E7",
+    border: "#272729",
+    notification: "#FF453A",
   },
   fonts,
 };

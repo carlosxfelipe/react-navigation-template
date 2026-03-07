@@ -79,14 +79,14 @@ function ButtonBase({
       textColor = color;
       break;
     case "tinted":
-      backgroundColor = Color(color).fade(0.85).string();
+      backgroundColor = Color(color).fade(0.85).hexa();
       textColor = color;
       break;
     case "filled":
       backgroundColor = color;
       textColor = Color(color).isDark()
-        ? "white"
-        : Color(color).darken(0.71).string();
+        ? "#FFFFFF"
+        : Color(color).darken(0.71).hex();
       break;
   }
 
@@ -96,7 +96,7 @@ function ButtonBase({
     <PlatformPressable
       {...rest}
       android_ripple={{
-        color: Color(textColor).fade(0.85).string(),
+        color: Color(textColor).fade(0.85).hexa(),
         ...android_ripple,
       }}
       pressOpacity={Platform.OS === "ios" ? undefined : 1}
