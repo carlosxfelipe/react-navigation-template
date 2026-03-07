@@ -12,6 +12,8 @@ export const DefaultTheme: Theme = {
     text: "#1C1C1E",
     border: "#D8D8D8",
     notification: "#FF3B30",
+    placeholder: "#3C3C4399",
+    inputBackground: "rgba(0,0,0,0.06)",
   },
   fonts,
 };

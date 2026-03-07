@@ -15,6 +15,7 @@ import { Profile } from "./screens/Profile";
 import { Settings } from "./screens/Settings";
 import { About } from "./screens/About";
 import { NotFound } from "./screens/NotFound";
+import { HeaderSearchBar } from "../components/HeaderSearchBar";
 
 type MaterialIconName = ComponentProps<typeof MaterialCommunityIcons>["name"];
 
@@ -60,6 +61,15 @@ const HomeTabs = createBottomTabNavigator({
         screen: tab.component,
         options: {
           title: tab.title,
+          ...(tab.name === "Home" && {
+            headerTitle: () => (
+              <HeaderSearchBar
+                leftIcon={{ icon: "pokeball", onPress: () => {} }}
+                rightIcon={{ icon: "cog-outline", screen: "Settings" }}
+              />
+            ),
+            headerRight: () => null,
+          }),
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name={tab.iconName}

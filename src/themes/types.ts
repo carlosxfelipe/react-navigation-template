@@ -27,6 +27,8 @@ export type Theme = {
     text: string;
     border: string;
     notification: string;
+    placeholder: string;
+    inputBackground: string;
   };
   fonts: {
     regular: FontStyle;
