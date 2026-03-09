@@ -1,10 +1,14 @@
 import { StyleSheet, View } from "react-native";
+import { useState } from "react";
 import { ThemedView } from "../../components/ThemedView";
 import { Text } from "../../components/Text";
 import { Button } from "../../components/Button";
 import { Icon } from "../../components/Icon";
+import { PlatformSwitch } from "../../components/PlatformSwitch";
 
 export function Home() {
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+
   return (
     <ThemedView style={styles.container}>
       <Text>Tela Inicial</Text>
@@ -52,6 +56,21 @@ export function Home() {
           Plain
         </Button>
       </View>
+
+      <Text style={styles.sectionTitle}>Demonstração do PlatformSwitch</Text>
+      <View style={styles.switchRow}>
+        <Text>Notificações</Text>
+        <PlatformSwitch
+          value={notificationsEnabled}
+          onValueChange={setNotificationsEnabled}
+        />
+      </View>
+      <Text>Status: {notificationsEnabled ? "Ativado" : "Desativado"}</Text>
+
+      <View style={styles.switchRow}>
+        <Text>Interruptor desabilitado</Text>
+        <PlatformSwitch value disabled />
+      </View>
     </ThemedView>
   );
 }
@@ -70,6 +89,11 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
     gap: 10,
+  },
+  switchRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   flexButton: {
     flex: 1,

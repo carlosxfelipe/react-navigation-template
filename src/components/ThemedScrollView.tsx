@@ -1,8 +1,11 @@
 import React from "react";
-import { ScrollView, useColorScheme, ScrollViewProps } from "react-native";
+import { ScrollView, ScrollViewProps } from "react-native";
+import { useTheme } from "@react-navigation/native";
+import type { Theme as AppTheme } from "../themes";
 
 export function ThemedScrollView(props: ScrollViewProps) {
-  const colorScheme = useColorScheme();
-  const backgroundColor = colorScheme === "dark" ? "#000" : "#fff";
-  return <ScrollView {...props} style={[props.style, { backgroundColor }]} />;
+  const { colors } = useTheme() as AppTheme;
+  const backgroundColor = colors.background;
+
+  return <ScrollView {...props} style={[{ backgroundColor }, props.style]} />;
 }

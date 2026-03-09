@@ -1,11 +1,17 @@
 import React from "react";
 import { useColorScheme } from "react-native";
 import { useTheme } from "@react-navigation/native";
-import { MaterialIcons, Feather, Ionicons } from "@expo/vector-icons";
+import {
+  MaterialIcons,
+  Feather,
+  Ionicons,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
 type MaterialIconName = keyof typeof MaterialIcons.glyphMap;
 type FeatherIconName = keyof typeof Feather.glyphMap;
 type IoniconName = keyof typeof Ionicons.glyphMap;
+type MaterialCommunityIconName = keyof typeof MaterialCommunityIcons.glyphMap;
 
 type BaseIconProps = {
   size?: number;
@@ -26,6 +32,10 @@ export type IconProps =
   | (BaseIconProps & {
       type: "Ionicons";
       name: IoniconName;
+    })
+  | (BaseIconProps & {
+      type: "MaterialCommunityIcons";
+      name: MaterialCommunityIconName;
     });
 
 export function Icon({
@@ -60,6 +70,15 @@ export function Icon({
     case "Ionicons":
       return (
         <Ionicons name={name} size={size} color={iconColor} style={style} />
+      );
+    case "MaterialCommunityIcons":
+      return (
+        <MaterialCommunityIcons
+          name={name as any}
+          size={size}
+          color={iconColor}
+          style={style}
+        />
       );
     default:
       return null;

@@ -26,7 +26,7 @@ export function App() {
 
   return (
     <>
-      <ThemedStatusBar />
+      <ThemedStatusBar dark={theme.dark} />
       <Navigation
         theme={theme}
         linking={{
