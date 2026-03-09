@@ -8,6 +8,7 @@ import { PlatformSwitch } from "../../components/PlatformSwitch";
 
 export function Home() {
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+  const [marketingEnabled, setMarketingEnabled] = useState(true);
 
   return (
     <ThemedView style={styles.container}>
@@ -70,6 +71,16 @@ export function Home() {
       <View style={styles.switchRow}>
         <Text>Interruptor desabilitado</Text>
         <PlatformSwitch value disabled />
+      </View>
+
+      <View style={styles.switchRow}>
+        <Text>Cor customizada</Text>
+        <PlatformSwitch
+          value={marketingEnabled}
+          onValueChange={setMarketingEnabled}
+          trackColor={{ false: "#D1D5DB", true: "#22C55E" }}
+          thumbColor="#FFFFFF"
+        />
       </View>
     </ThemedView>
   );

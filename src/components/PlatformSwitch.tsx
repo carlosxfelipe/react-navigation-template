@@ -15,13 +15,12 @@ const TRACK_HEIGHT = 28;
 const THUMB_SIZE = 22;
 const THUMB_MARGIN = 3;
 
-function AndroidSwitch({
+function NonIosSwitch({
   value,
   onValueChange,
   disabled,
   trackColor,
 }: Pick<SwitchProps, "value" | "onValueChange" | "disabled" | "trackColor">) {
-  const theme = useTheme() as AppTheme;
   const anim = useRef(new Animated.Value(value ? 1 : 0)).current;
 
   useEffect(() => {
@@ -32,10 +31,8 @@ function AndroidSwitch({
     }).start();
   }, [value, anim]);
 
-  const activeColor = String(trackColor?.true ?? theme.colors.primary);
-  const inactiveColor = String(
-    trackColor?.false ?? (theme.dark ? "#555" : "#b0b0b0"),
-  );
+  const activeColor = String(trackColor?.true ?? "#0A84FF");
+  const inactiveColor = String(trackColor?.false ?? "#b0b0b0");
 
   const trackBg = anim.interpolate({
     inputRange: [0, 1],
@@ -81,10 +78,28 @@ function AndroidSwitch({
 }
 
 export function PlatformSwitch(props: SwitchProps) {
-  if (Platform.OS === "android") {
-    return <AndroidSwitch {...props} />;
+  const theme = useTheme() as AppTheme;
+
+  const activeTrackColor = props.trackColor?.true ?? theme.colors.primary;
+  const inactiveTrackColor =
+    props.trackColor?.false ?? (theme.dark ? "#555" : "#b0b0b0");
+
+  const mergedTrackColor = {
+    false: inactiveTrackColor,
+    true: activeTrackColor,
+  };
+
+  if (Platform.OS !== "ios") {
+    return <NonIosSwitch {...props} trackColor={mergedTrackColor} />;
   }
-  return <Switch {...props} />;
+
+  return (
+    <Switch
+      {...props}
+      trackColor={mergedTrackColor}
+      ios_backgroundColor={inactiveTrackColor ?? undefined}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
