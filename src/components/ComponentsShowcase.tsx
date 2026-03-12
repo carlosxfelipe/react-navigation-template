@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 
 import { Button } from "./Button";
 import { PlatformSwitch } from "./PlatformSwitch";
+import { Skeleton } from "./Skeleton";
 import { Text } from "./Text";
 
 export function ComponentsShowcase() {
@@ -11,7 +12,8 @@ export function ComponentsShowcase() {
 
   return (
     <>
-      <Text style={styles.sectionTitle}>Formatos (Shapes)</Text>
+      <Text style={styles.sectionTitle}>Botões</Text>
+      <Text style={styles.subSectionTitle}>Formatos</Text>
       <View style={styles.row}>
         <Button shape="pill" style={styles.flexButton}>
           Pill
@@ -24,7 +26,7 @@ export function ComponentsShowcase() {
         </Button>
       </View>
 
-      <Text style={styles.sectionTitle}>Variantes (Variants)</Text>
+      <Text style={styles.subSectionTitle}>Variantes</Text>
       <View style={styles.row}>
         <Button variant="tinted" style={styles.flexButton}>
           Tinted
@@ -37,7 +39,7 @@ export function ComponentsShowcase() {
         </Button>
       </View>
 
-      <Text style={styles.sectionTitle}>Demonstração do PlatformSwitch</Text>
+      <Text style={styles.sectionTitle}>Switches (Interruptores)</Text>
       <View style={styles.switchRow}>
         <Text>Notificações</Text>
         <PlatformSwitch
@@ -61,6 +63,18 @@ export function ComponentsShowcase() {
           thumbColor="#FFFFFF"
         />
       </View>
+
+      <Text style={styles.sectionTitle}>Skeletons (Carregamento)</Text>
+      <View style={styles.skeletonContainer}>
+        <View style={{ flexDirection: "row", gap: 12, alignItems: "center" }}>
+          <Skeleton width={50} height={50} borderRadius={25} />
+          <View style={{ gap: 8, flex: 1 }}>
+            <Skeleton width="70%" height={20} borderRadius={4} />
+            <Skeleton width="40%" height={16} borderRadius={4} />
+          </View>
+        </View>
+        <Skeleton width="100%" height={120} borderRadius={8} />
+      </View>
     </>
   );
 }
@@ -70,6 +84,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontWeight: "bold",
     fontSize: 16,
+  },
+  subSectionTitle: {
+    marginTop: 12,
+    marginBottom: 4,
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: "500",
+    opacity: 0.7,
   },
   row: {
     flexDirection: "row",
@@ -83,5 +105,9 @@ const styles = StyleSheet.create({
   flexButton: {
     flex: 1,
     paddingHorizontal: 0,
+  },
+  skeletonContainer: {
+    gap: 16,
+    marginTop: 10,
   },
 });

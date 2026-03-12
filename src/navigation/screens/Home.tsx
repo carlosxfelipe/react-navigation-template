@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { ThemedView } from "../../components/ThemedView";
+import { ThemedScrollView } from "../../components/ThemedScrollView";
 import { Text } from "../../components/Text";
 import { Button } from "../../components/Button";
 import { Icon } from "../../components/Icon";
@@ -7,7 +7,10 @@ import { ComponentsShowcase } from "../../components/ComponentsShowcase";
 
 export function Home() {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
       <Text>Tela Inicial</Text>
       <Text>
         Abra o arquivo 'src/App.tsx' para começar a trabalhar no seu app!
@@ -29,13 +32,16 @@ export function Home() {
       </Button>
 
       <ComponentsShowcase />
-    </ThemedView>
+    </ThemedScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  contentContainer: {
+    flexGrow: 1,
     padding: 20,
     gap: 10,
   },
