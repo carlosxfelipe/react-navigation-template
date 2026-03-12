@@ -1,8 +1,7 @@
-import { useTheme } from "@react-navigation/native";
-// eslint-disable-next-line no-restricted-imports
 import { Text as NativeText, type TextProps } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
-export function Text({ style, ...rest }: TextProps) {
+export function ThemedText({ style, ...rest }: TextProps) {
   const { colors, fonts } = useTheme();
 
   return (

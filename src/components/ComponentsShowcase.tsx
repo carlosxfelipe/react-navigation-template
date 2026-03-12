@@ -4,7 +4,7 @@ import { StyleSheet, View } from "react-native";
 import { Button } from "./Button";
 import { PlatformSwitch } from "./PlatformSwitch";
 import { Skeleton } from "./Skeleton";
-import { Text } from "./Text";
+import { ThemedText } from "./ThemedText";
 
 export function ComponentsShowcase() {
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
@@ -12,8 +12,8 @@ export function ComponentsShowcase() {
 
   return (
     <>
-      <Text style={styles.sectionTitle}>Botões</Text>
-      <Text style={styles.subSectionTitle}>Formatos</Text>
+      <ThemedText style={styles.sectionTitle}>Botões</ThemedText>
+      <ThemedText style={styles.subSectionTitle}>Formatos</ThemedText>
       <View style={styles.row}>
         <Button shape="pill" style={styles.flexButton}>
           Pill
@@ -26,7 +26,7 @@ export function ComponentsShowcase() {
         </Button>
       </View>
 
-      <Text style={styles.subSectionTitle}>Variantes</Text>
+      <ThemedText style={styles.subSectionTitle}>Variantes</ThemedText>
       <View style={styles.row}>
         <Button variant="tinted" style={styles.flexButton}>
           Tinted
@@ -39,23 +39,27 @@ export function ComponentsShowcase() {
         </Button>
       </View>
 
-      <Text style={styles.sectionTitle}>Switches (Interruptores)</Text>
+      <ThemedText style={styles.sectionTitle}>
+        Switches (Interruptores)
+      </ThemedText>
       <View style={styles.switchRow}>
-        <Text>Notificações</Text>
+        <ThemedText>Notificações</ThemedText>
         <PlatformSwitch
           value={notificationsEnabled}
           onValueChange={setNotificationsEnabled}
         />
       </View>
-      <Text>Status: {notificationsEnabled ? "Ativado" : "Desativado"}</Text>
+      <ThemedText>
+        Status: {notificationsEnabled ? "Ativado" : "Desativado"}
+      </ThemedText>
 
       <View style={styles.switchRow}>
-        <Text>Interruptor desabilitado</Text>
+        <ThemedText>Interruptor desabilitado</ThemedText>
         <PlatformSwitch value disabled />
       </View>
 
       <View style={styles.switchRow}>
-        <Text>Cor customizada</Text>
+        <ThemedText>Cor customizada</ThemedText>
         <PlatformSwitch
           value={marketingEnabled}
           onValueChange={setMarketingEnabled}
@@ -64,7 +68,9 @@ export function ComponentsShowcase() {
         />
       </View>
 
-      <Text style={styles.sectionTitle}>Skeletons (Carregamento)</Text>
+      <ThemedText style={styles.sectionTitle}>
+        Skeletons (Carregamento)
+      </ThemedText>
       <View style={styles.skeletonContainer}>
         <View style={{ flexDirection: "row", gap: 12, alignItems: "center" }}>
           <Skeleton width={50} height={50} borderRadius={25} />

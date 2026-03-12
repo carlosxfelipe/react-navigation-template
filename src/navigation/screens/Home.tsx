@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { ThemedScrollView } from "../../components/ThemedScrollView";
-import { Text } from "../../components/Text";
+import { ThemedText } from "../../components/ThemedText";
 import { Button } from "../../components/Button";
 import { Icon } from "../../components/Icon";
 import { ComponentsShowcase } from "../../components/ComponentsShowcase";
@@ -11,10 +11,10 @@ export function Home() {
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
     >
-      <Text>Tela Inicial</Text>
-      <Text>
+      <ThemedText>Tela Inicial</ThemedText>
+      <ThemedText>
         Abra o arquivo 'src/App.tsx' para começar a trabalhar no seu app!
-      </Text>
+      </ThemedText>
 
       <Button
         screen="Profile"

@@ -11,7 +11,7 @@ import {
   PlatformPressable,
   type Props as PlatformPressableProps,
 } from "./PlatformPressable";
-import { Text } from "./Text";
+import { ThemedText } from "./ThemedText";
 
 type ButtonBaseProps = Omit<PlatformPressableProps, "children"> & {
   variant?: "plain" | "tinted" | "filled";
@@ -106,9 +106,9 @@ function ButtonBase({
       <View style={styles.content}>
         {iconLeft && <View style={styles.icon}>{iconLeft}</View>}
 
-        <Text style={[{ color: textColor }, fonts.regular, styles.text]}>
+        <ThemedText style={[{ color: textColor }, fonts.regular, styles.text]}>
           {children}
-        </Text>
+        </ThemedText>
 
         {iconRight && <View style={styles.icon}>{iconRight}</View>}
       </View>

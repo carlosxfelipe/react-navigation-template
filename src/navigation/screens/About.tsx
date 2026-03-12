@@ -1,26 +1,26 @@
 import { StyleSheet } from "react-native";
 import { ThemedView } from "../../components/ThemedView";
-import { Text } from "../../components/Text";
+import { ThemedText } from "../../components/ThemedText";
 
 export function About() {
   return (
     <ThemedView style={styles.container}>
-      <Text>
+      <ThemedText>
         Este projeto é baseado no template oficial do React Navigation:
-      </Text>
-      <Text>https://github.com/react-navigation/template</Text>
-      <Text>
+      </ThemedText>
+      <ThemedText>https://github.com/react-navigation/template</ThemedText>
+      <ThemedText>
         Nota: este app usa Development Build e não roda no Expo Go por padrão.
-      </Text>
-      <Text>
+      </ThemedText>
+      <ThemedText>
         Para usar Expo Go, ajuste o `package.json`: remova `expo-dev-client` e a
         flag `--dev-client` do script `start`.
-      </Text>
-      <Text>
+      </ThemedText>
+      <ThemedText>
         Recomendamos manter Development Build no desenvolvimento. As pastas
         `ios/` e `android/` são geradas automaticamente (CNG), por isso o ideal
         é usar config plugins em vez de editar essas pastas diretamente.
-      </Text>
+      </ThemedText>
     </ThemedView>
   );
 }
