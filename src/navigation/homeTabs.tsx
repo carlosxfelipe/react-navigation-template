@@ -1,8 +1,24 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+import { HeaderSearchBar } from "../components/HeaderSearchBar";
 import type { Theme as AppTheme } from "../themes";
 import { tabItems } from "./tabItems";
+
+const getHeaderOptions = (tabName: string) => {
+  if (tabName !== "Home") {
+    return {};
+  }
+
+  return {
+    headerTitle: () => (
+      <HeaderSearchBar
+        placeholder="Buscar na Home..."
+        rightIcon={{ icon: "cog-outline", screen: "Settings" }}
+      />
+    ),
+  };
+};
 
 export const HomeTabs = createBottomTabNavigator({
   screenOptions: ({ theme }) => {
@@ -26,6 +42,7 @@ export const HomeTabs = createBottomTabNavigator({
         screen: tab.component,
         options: {
           title: tab.title,
+          ...getHeaderOptions(tab.name),
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name={tab.iconName}

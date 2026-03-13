@@ -10,6 +10,7 @@ export function Home() {
     <ThemedScrollView
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
+      showsVerticalScrollIndicator={false}
     >
       <ThemedText>Tela Inicial</ThemedText>
       <ThemedText>
@@ -19,14 +20,16 @@ export function Home() {
       <Button
         screen="Profile"
         params={{ user: "carlos" }}
-        iconLeft={<Icon type="Feather" name="user" primary />}
+        iconLeft={(color) => <Icon type="Feather" name="user" color={color} />}
       >
         Ir para o Perfil
       </Button>
 
       <Button
         screen="Settings"
-        iconRight={<Icon type="Ionicons" name="settings-outline" primary />}
+        iconRight={(color) => (
+          <Icon type="Ionicons" name="settings-outline" color={color} />
+        )}
       >
         Ir para as Configurações
       </Button>

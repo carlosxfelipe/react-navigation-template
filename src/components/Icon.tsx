@@ -1,6 +1,6 @@
 import React from "react";
 import { useColorScheme } from "react-native";
-import { useTheme } from "@react-navigation/native";
+import type { StyleProp, TextStyle } from "react-native";
 import {
   MaterialIcons,
   Feather,
@@ -16,8 +16,7 @@ type MaterialCommunityIconName = keyof typeof MaterialCommunityIcons.glyphMap;
 type BaseIconProps = {
   size?: number;
   color?: string;
-  primary?: boolean;
-  style?: any;
+  style?: StyleProp<TextStyle>;
 };
 
 export type IconProps =
@@ -38,20 +37,10 @@ export type IconProps =
       name: MaterialCommunityIconName;
     });
 
-export function Icon({
-  type,
-  name,
-  size = 20,
-  color,
-  primary,
-  style,
-}: IconProps) {
+export function Icon({ type, name, size = 20, color, style }: IconProps) {
   const colorScheme = useColorScheme();
-  const { colors } = useTheme();
 
-  const iconColor =
-    color ??
-    (primary ? colors.primary : colorScheme === "dark" ? "#fff" : "#000");
+  const iconColor = color ?? (colorScheme === "dark" ? "#fff" : "#000");
 
   switch (type) {
     case "MaterialIcons":
@@ -74,7 +63,7 @@ export function Icon({
     case "MaterialCommunityIcons":
       return (
         <MaterialCommunityIcons
-          name={name as any}
+          name={name}
           size={size}
           color={iconColor}
           style={style}

@@ -18,8 +18,8 @@ type ButtonBaseProps = Omit<PlatformPressableProps, "children"> & {
   color?: string;
   shape?: "pill" | "rounded" | "sharp";
   children: string | string[];
-  iconLeft?: React.ReactNode;
-  iconRight?: React.ReactNode;
+  iconLeft?: (color: string) => React.ReactNode;
+  iconRight?: (color: string) => React.ReactNode;
 };
 
 type ButtonLinkProps<ParamList extends ReactNavigation.RootParamList> =
@@ -56,9 +56,9 @@ function ButtonLink<ParamList extends ReactNavigation.RootParamList>({
 }
 
 function ButtonBase({
-  variant = "tinted",
+  variant = "filled",
   color: customColor,
-  shape = "pill",
+  shape = "rounded",
   android_ripple,
   style,
   children,
@@ -104,13 +104,13 @@ function ButtonBase({
       style={[{ backgroundColor, borderRadius }, styles.button, style]}
     >
       <View style={styles.content}>
-        {iconLeft && <View style={styles.icon}>{iconLeft}</View>}
+        {iconLeft && <View style={styles.icon}>{iconLeft(textColor)}</View>}
 
         <ThemedText style={[{ color: textColor }, fonts.regular, styles.text]}>
           {children}
         </ThemedText>
 
-        {iconRight && <View style={styles.icon}>{iconRight}</View>}
+        {iconRight && <View style={styles.icon}>{iconRight(textColor)}</View>}
       </View>
     </PlatformPressable>
   );

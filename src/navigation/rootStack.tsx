@@ -25,12 +25,15 @@ export const RootStack = createNativeStackNavigator({
     HomeTabs: {
       screen: HomeTabs,
       options: {
-        title: "Home",
+        title: "Início",
         headerShown: false,
       },
     },
     Profile: {
       screen: Profile,
+      options: {
+        title: "Perfil",
+      },
       linking: {
         path: ":user(@[a-zA-Z0-9-_]+)",
         parse: {
@@ -44,10 +47,11 @@ export const RootStack = createNativeStackNavigator({
     Settings: {
       screen: Settings,
       options: ({ navigation }) => ({
+        title: "Configurações",
         presentation: "modal",
         headerRight: () => (
           <HeaderButton onPress={navigation.goBack}>
-            <Text>Close</Text>
+            <Text>Fechar</Text>
           </HeaderButton>
         ),
       }),
