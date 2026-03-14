@@ -27,6 +27,8 @@ export const HomeTabs = createBottomTabNavigator({
         screen: tab.component,
         options: {
           title: tab.title,
+
+          // Aplica opções de header por aba (ver headerOptions.tsx)
           ...getHeaderOptions(tab.name),
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons

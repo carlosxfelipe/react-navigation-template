@@ -58,6 +58,31 @@ Caso prefira não clonar este repositório, siga os passos abaixo:
 - [Documentação do React Navigation](https://reactnavigation.org/)
 - [Documentação do Expo](https://docs.expo.dev/)
 
+## Opções de Header por Aba
+
+O arquivo `src/navigation/headerOptions.tsx` centraliza as opções de header aplicadas a cada aba do navegador inferior. Em `homeTabs.tsx`, a linha:
+
+```tsx
+// Aplica opções de header por aba (ver headerOptions.tsx)
+...getHeaderOptions(tab.name),
+```
+
+faz o spread das opções retornadas para cada aba, permitindo configurar comportamentos diferentes sem poluir o navegador. O arquivo define duas listas:
+
+- **`TABS_WITH_LARGE_HEADER`** — abas que escondem o header nativo (`headerShown: false`) para usar o `LargeHeader` customizado, inspirado no estilo do Nubank: bloco colorido que rola com o conteúdo e desaparece ao scrollar, deixando apenas a cor primária atrás do status bar.
+- **`TABS_WITH_SEARCH_BAR`** — abas que substituem o título do header pelo componente `HeaderSearchBar`.
+
+### Variantes de Home disponíveis
+
+O projeto inclui duas implementações de tela inicial que podem ser usadas em `tabItems.ts`:
+
+| Componente   | Estilo                                        | Header                            |
+| ------------ | --------------------------------------------- | --------------------------------- |
+| `Home`       | Padrão com `HeaderSearchBar` no topo          | Nativo com barra de busca         |
+| `HomeNubank` | Large header colorido que desaparece ao rolar | Sem header nativo (`LargeHeader`) |
+
+Para alternar, basta trocar o `component` da aba `Home` em `src/navigation/tabItems.ts`.
+
 ## Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.

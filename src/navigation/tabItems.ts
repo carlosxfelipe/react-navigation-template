@@ -3,6 +3,7 @@ import type { ComponentProps, ComponentType } from "react";
 
 import { About } from "./screens/About";
 import { Home } from "./screens/Home";
+import { HomeNubank } from "./screens/HomeNubank";
 
 type MaterialIconName = ComponentProps<typeof MaterialCommunityIcons>["name"];
 
@@ -19,6 +20,12 @@ export const tabItems: TabItem[] = [
     component: Home,
     title: "Início",
     iconName: "home-outline",
+  },
+  {
+    name: "Home Nubank",
+    component: HomeNubank,
+    title: "Início Nubank",
+    iconName: "bank-outline",
   },
   {
     name: "About",
