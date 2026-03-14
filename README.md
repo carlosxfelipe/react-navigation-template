@@ -60,28 +60,26 @@ Caso prefira não clonar este repositório, siga os passos abaixo:
 
 ## Opções de Header por Aba
 
-O arquivo `src/navigation/headerOptions.tsx` centraliza as opções de header aplicadas a cada aba do navegador inferior. Em `homeTabs.tsx`, a linha:
+O arquivo `src/navigation/headerOptions.tsx` centraliza as opções de header aplicadas a cada aba. Em `homeTabs.tsx`, o spread:
 
 ```tsx
 // Aplica opções de header por aba (ver headerOptions.tsx)
 ...getHeaderOptions(tab.name),
 ```
 
-faz o spread das opções retornadas para cada aba, permitindo configurar comportamentos diferentes sem poluir o navegador. O arquivo define duas listas:
+permite configurar comportamentos diferentes por aba sem poluir o navegador. O arquivo define duas listas:
 
-- **`TABS_WITH_LARGE_HEADER`** — abas que escondem o header nativo (`headerShown: false`) para usar o `LargeHeader` customizado, inspirado no estilo do Nubank: bloco colorido que rola com o conteúdo e desaparece ao scrollar, deixando apenas a cor primária atrás do status bar.
-- **`TABS_WITH_SEARCH_BAR`** — abas que substituem o título do header pelo componente `HeaderSearchBar`.
+- **`TABS_WITH_LARGE_HEADER`** — abas que usam o componente `HeroScrollView`: header colorido que rola junto com o conteúdo e desaparece ao scrollar, deixando apenas a cor primária atrás da status bar. O header nativo é ocultado (`headerShown: false`).
+- **`TABS_WITH_SEARCH_BAR`** — abas que terão um header com barra de pesquisa (a implementar).
 
-### Variantes de Home disponíveis
+### Telas de Home disponíveis
 
-O projeto inclui duas implementações de tela inicial que podem ser usadas em `tabItems.ts`:
+| Componente | Descrição                                          |
+| ---------- | -------------------------------------------------- |
+| `Home`     | Tela padrão com scroll simples                     |
+| `HomeHero` | Tela com `HeroScrollView`: header colorido no topo |
 
-| Componente   | Estilo                                        | Header                            |
-| ------------ | --------------------------------------------- | --------------------------------- |
-| `Home`       | Padrão com `HeaderSearchBar` no topo          | Nativo com barra de busca         |
-| `HomeNubank` | Large header colorido que desaparece ao rolar | Sem header nativo (`LargeHeader`) |
-
-Para alternar, basta trocar o `component` da aba `Home` em `src/navigation/tabItems.ts`.
+Para alternar, basta trocar o `component` da aba desejada em `src/navigation/tabItems.ts`.
 
 ## Licença
 

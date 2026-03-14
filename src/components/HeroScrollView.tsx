@@ -10,7 +10,11 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const LargeHeader = ({ header, headerHeight = 88, children }: Props) => {
+export const HeroScrollView = ({
+  header,
+  headerHeight = 88,
+  children,
+}: Props) => {
   const { colors, dark } = useTheme() as AppTheme;
   const insets = useSafeAreaInsets();
   const isFocused = useIsFocused();

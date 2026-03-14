@@ -1,11 +1,11 @@
 import { StyleSheet, View } from "react-native";
-import { LargeHeader } from "../../components/LargeHeader";
+import { HeroScrollView } from "../../components/HeroScrollView";
 import { ThemedText } from "../../components/ThemedText";
 import { ComponentsShowcase } from "../../components/ComponentsShowcase";
 
-export function HomeNubank() {
+export function HomeHero() {
   return (
-    <LargeHeader
+    <HeroScrollView
       header={
         <View style={styles.headerContent}>
           <ThemedText style={styles.title}>Olá, Carlos</ThemedText>
@@ -14,7 +14,7 @@ export function HomeNubank() {
       }
     >
       <ComponentsShowcase />
-    </LargeHeader>
+    </HeroScrollView>
   );
 }
 
