@@ -1,29 +1,37 @@
+import { StyleSheet, View } from "react-native";
 import { LargeHeader } from "../../components/LargeHeader";
-import { Button } from "../../components/Button";
-import { Icon } from "../../components/Icon";
+import { ThemedText } from "../../components/ThemedText";
 import { ComponentsShowcase } from "../../components/ComponentsShowcase";
 
 export function HomeNubank() {
   return (
-    <LargeHeader title="Olá, Carlos" subtitle="Bem-vindo ao seu app!">
-      <Button
-        screen="Profile"
-        params={{ user: "carlos" }}
-        iconLeft={(color) => <Icon type="Feather" name="user" color={color} />}
-      >
-        Ir para o Perfil
-      </Button>
-
-      <Button
-        screen="Settings"
-        iconRight={(color) => (
-          <Icon type="Ionicons" name="settings-outline" color={color} />
-        )}
-      >
-        Ir para as Configurações
-      </Button>
-
+    <LargeHeader
+      header={
+        <View style={styles.headerContent}>
+          <ThemedText style={styles.title}>Olá, Carlos</ThemedText>
+          <ThemedText style={styles.subtitle}>Bem-vindo ao seu app!</ThemedText>
+        </View>
+      }
+    >
       <ComponentsShowcase />
     </LargeHeader>
   );
 }
+
+const styles = StyleSheet.create({
+  headerContent: {
+    gap: 4,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: "bold",
+    lineHeight: 34,
+    color: "#FFFFFF",
+  },
+  subtitle: {
+    fontSize: 15,
+    lineHeight: 20,
+    color: "#FFFFFF",
+    opacity: 0.85,
+  },
+});

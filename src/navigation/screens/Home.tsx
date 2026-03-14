@@ -3,7 +3,6 @@ import { ThemedScrollView } from "../../components/ThemedScrollView";
 import { ThemedText } from "../../components/ThemedText";
 import { Button } from "../../components/Button";
 import { Icon } from "../../components/Icon";
-import { ComponentsShowcase } from "../../components/ComponentsShowcase";
 
 export function Home() {
   return (
@@ -33,8 +32,6 @@ export function Home() {
       >
         Ir para as Configurações
       </Button>
-
-      <ComponentsShowcase />
     </ThemedScrollView>
   );
 }

@@ -11,8 +11,10 @@ export function ComponentsShowcase() {
   const [marketingEnabled, setMarketingEnabled] = useState(true);
 
   return (
-    <>
-      <ThemedText style={styles.sectionTitle}>Botões</ThemedText>
+    <View style={styles.container}>
+      <ThemedText style={[styles.sectionTitle, styles.firstSectionTitle]}>
+        Botões
+      </ThemedText>
       <ThemedText style={styles.subSectionTitle}>Formatos</ThemedText>
       <View style={styles.row}>
         <Button shape="pill" style={styles.flexButton}>
@@ -49,7 +51,7 @@ export function ComponentsShowcase() {
           onValueChange={setNotificationsEnabled}
         />
       </View>
-      <ThemedText>
+      <ThemedText style={styles.statusText}>
         Status: {notificationsEnabled ? "Ativado" : "Desativado"}
       </ThemedText>
 
@@ -72,32 +74,40 @@ export function ComponentsShowcase() {
         Skeletons (Carregamento)
       </ThemedText>
       <View style={styles.skeletonContainer}>
-        <View style={{ flexDirection: "row", gap: 12, alignItems: "center" }}>
+        <View style={styles.skeletonRow}>
           <Skeleton width={50} height={50} borderRadius={25} />
-          <View style={{ gap: 8, flex: 1 }}>
+          <View style={styles.skeletonLines}>
             <Skeleton width="70%" height={20} borderRadius={4} />
             <Skeleton width="40%" height={16} borderRadius={4} />
           </View>
         </View>
         <Skeleton width="100%" height={120} borderRadius={8} />
       </View>
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    gap: 8,
+  },
   sectionTitle: {
-    marginTop: 20,
+    marginTop: 16,
     fontWeight: "bold",
     fontSize: 16,
   },
+  firstSectionTitle: {
+    marginTop: 0,
+  },
   subSectionTitle: {
-    marginTop: 12,
-    marginBottom: 4,
     fontSize: 14,
     lineHeight: 20,
     fontWeight: "500",
-    opacity: 0.7,
+    opacity: 0.6,
+  },
+  statusText: {
+    fontSize: 14,
+    opacity: 0.6,
   },
   row: {
     flexDirection: "row",
@@ -114,6 +124,14 @@ const styles = StyleSheet.create({
   },
   skeletonContainer: {
     gap: 16,
-    marginTop: 10,
+  },
+  skeletonRow: {
+    flexDirection: "row",
+    gap: 12,
+    alignItems: "center",
+  },
+  skeletonLines: {
+    gap: 8,
+    flex: 1,
   },
 });
