@@ -14,7 +14,7 @@ import {
 import { ThemedText } from "./ThemedText";
 
 type ButtonBaseProps = Omit<PlatformPressableProps, "children"> & {
-  variant?: "plain" | "tinted" | "filled";
+  variant?: "plain" | "tinted" | "filled" | "outline";
   color?: string;
   shape?: "pill" | "rounded" | "sharp";
   children: string | string[];
@@ -72,11 +72,19 @@ function ButtonBase({
 
   let backgroundColor;
   let textColor;
+  let borderColor;
+  let borderWidth;
 
   switch (variant) {
     case "plain":
       backgroundColor = "transparent";
       textColor = color;
+      break;
+    case "outline":
+      backgroundColor = "transparent";
+      textColor = color;
+      borderColor = color;
+      borderWidth = 1;
       break;
     case "tinted":
       backgroundColor = Color(color).fade(0.85).hexa();
@@ -90,6 +98,17 @@ function ButtonBase({
       break;
   }
 
+  if (rest.disabled) {
+    backgroundColor =
+      variant === "filled"
+        ? Color(backgroundColor).grayscale().fade(0.5).hexa()
+        : "transparent";
+    textColor = Color(textColor).grayscale().fade(0.5).hexa();
+    borderColor = borderColor
+      ? Color(borderColor).grayscale().fade(0.5).hexa()
+      : undefined;
+  }
+
   const borderRadius = shape === "pill" ? 40 : shape === "rounded" ? 8 : 0;
 
   return (
@@ -101,7 +120,11 @@ function ButtonBase({
       }}
       pressOpacity={Platform.OS === "ios" ? undefined : 1}
       hoverEffect={{ color: textColor }}
-      style={[{ backgroundColor, borderRadius }, styles.button, style]}
+      style={[
+        { backgroundColor, borderRadius, borderColor, borderWidth },
+        styles.button,
+        style,
+      ]}
     >
       <View style={styles.content}>
         {iconLeft && <View style={styles.icon}>{iconLeft(textColor)}</View>}

@@ -40,6 +40,14 @@ export function ComponentsShowcase() {
           Plain
         </Button>
       </View>
+      <View style={styles.row}>
+        <Button variant="outline" style={styles.flexButton}>
+          Outline
+        </Button>
+        <Button disabled style={styles.flexButton}>
+          Disabled
+        </Button>
+      </View>
 
       <ThemedText style={styles.sectionTitle}>
         Switches (Interruptores)
