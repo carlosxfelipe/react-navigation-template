@@ -1,16 +1,12 @@
 import { Text } from "@react-navigation/elements";
-import { StaticScreenProps } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
-import { ThemedView } from "../../components/ThemedView";
 
-type Props = StaticScreenProps<{
-  user: string;
-}>;
+import { ThemedView } from "../components/ThemedView";
 
-export function Profile({ route }: Props) {
+export function Settings() {
   return (
     <ThemedView style={styles.container}>
-      <Text>Perfil de {route.params.user}</Text>
+      <Text>Tela de Configurações</Text>
     </ThemedView>
   );
 }
@@ -20,6 +16,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    gap: 10,
+  },
+  row: {
+    flexDirection: "row",
     gap: 10,
   },
 });

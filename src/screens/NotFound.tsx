@@ -1,6 +1,6 @@
 import { Text, Button } from "@react-navigation/elements";
 import { StyleSheet } from "react-native";
-import { ThemedView } from "../../components/ThemedView";
+import { ThemedView } from "../components/ThemedView";
 
 export function NotFound() {
   return (

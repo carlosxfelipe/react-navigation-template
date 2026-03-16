@@ -3,9 +3,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import type { Theme as AppTheme } from "../themes";
 import { HomeTabs } from "./homeTabs";
-import { NotFound } from "./screens/NotFound";
-import { Profile } from "./screens/Profile";
-import { Settings } from "./screens/Settings";
+import { NotFound } from "../screens/NotFound";
+import { Profile } from "../screens/Profile";
+import { Settings } from "../screens/Settings";
 
 export const RootStack = createNativeStackNavigator({
   screenOptions: ({ theme }) => {

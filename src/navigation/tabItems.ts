@@ -1,9 +1,9 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import type { ComponentProps, ComponentType } from "react";
 
-import { About } from "./screens/About";
-import { Home } from "./screens/Home";
-import { HomeHero } from "./screens/HomeHero";
+import { About } from "../screens/About";
+import { Home } from "../screens/Home";
+import { HomeHero } from "../screens/HomeHero";
 
 type MaterialIconName = ComponentProps<typeof MaterialCommunityIcons>["name"];
 

@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
-import { HeroScrollView } from "../../components/HeroScrollView";
-import { ThemedText } from "../../components/ThemedText";
-import { ComponentsShowcase } from "../../components/ComponentsShowcase";
+import { HeroScrollView } from "../components/HeroScrollView";
+import { ThemedText } from "../components/ThemedText";
+import { ComponentsShowcase } from "../components/ComponentsShowcase";
 
 export function HomeHero() {
   return (
