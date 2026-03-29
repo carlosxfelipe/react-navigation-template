@@ -1,6 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import { HeroScrollView } from "../components/HeroScrollView";
 import { ThemedText } from "../components/ThemedText";
+import { ContrastText } from "../components/ContrastText";
 import { ComponentsShowcase } from "../components/ComponentsShowcase";
 import { useTheme } from "@react-navigation/native";
 import type { Theme as AppTheme } from "../themes";
@@ -13,8 +14,8 @@ export function HomeHero() {
       headerHeight={138}
       header={
         <View style={styles.headerContent}>
-          <ThemedText style={styles.title}>Olá, Carlos</ThemedText>
-          <ThemedText style={styles.subtitle}>Bem-vindo ao seu app!</ThemedText>
+          <ContrastText style={styles.title} backgroundColor={colors.primary}>Olá, Carlos</ContrastText>
+          <ContrastText style={styles.subtitle} backgroundColor={colors.primary}>Bem-vindo ao seu app!</ContrastText>
         </View>
       }
     >
@@ -41,12 +42,10 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "bold",
     lineHeight: 34,
-    color: "#FFFFFF",
   },
   subtitle: {
     fontSize: 15,
     lineHeight: 20,
-    color: "#FFFFFF",
     opacity: 0.85,
   },
   overlapCard: {
