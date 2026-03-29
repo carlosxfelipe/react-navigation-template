@@ -11,6 +11,7 @@ export const DarkTheme: Theme = {
     tabBar: "#121212",
     text: "#E5E5E7",
     border: "#272729",
+    cardBorder: "rgba(150, 150, 150, 0.2)",
     notification: "#FF453A",
     placeholder: "#EBEBF599",
     inputBackground: "rgba(255,255,255,0.08)",

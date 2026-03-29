@@ -1,10 +1,16 @@
-import { StyleSheet } from "react-native";
+import { Linking, StyleSheet } from "react-native";
 import { ThemedScrollView } from "../components/ThemedScrollView";
 import { ThemedText } from "../components/ThemedText";
 import { Button } from "../components/Button";
 import { Icon } from "../components/Icon";
 
 export function Home() {
+  const handleOpenGithub = () => {
+    Linking.openURL(
+      "https://github.com/carlosxfelipe/react-navigation-template",
+    );
+  };
+
   return (
     <ThemedScrollView
       style={styles.container}
@@ -31,6 +37,21 @@ export function Home() {
         )}
       >
         Ir para as Configurações
+      </Button>
+
+      <Button
+        variant="filled"
+        onPress={handleOpenGithub}
+        iconLeft={(color) => (
+          <Icon
+            type="MaterialCommunityIcons"
+            name="github"
+            color={color}
+            size={22}
+          />
+        )}
+      >
+        Ver no GitHub
       </Button>
     </ThemedScrollView>
   );

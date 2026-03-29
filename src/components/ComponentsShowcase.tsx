@@ -5,6 +5,8 @@ import { Button } from "./Button";
 import { PlatformSwitch } from "./PlatformSwitch";
 import { Skeleton } from "./Skeleton";
 import { ThemedText } from "./ThemedText";
+import { InfoCard } from "./InfoCard";
+import { Icon } from "./Icon";
 
 export function ComponentsShowcase() {
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
@@ -49,6 +51,37 @@ export function ComponentsShowcase() {
         </Button>
       </View>
 
+      <ThemedText style={styles.subSectionTitle}>Com Ícones</ThemedText>
+      <View style={styles.row}>
+        <Button
+          style={styles.flexButton}
+          iconLeft={(color) => (
+            <Icon
+              type="MaterialCommunityIcons"
+              name="check"
+              color={color}
+              size={20}
+            />
+          )}
+        >
+          Esquerda
+        </Button>
+        <Button
+          variant="outline"
+          style={styles.flexButton}
+          iconRight={(color) => (
+            <Icon
+              type="MaterialCommunityIcons"
+              name="arrow-right"
+              color={color}
+              size={20}
+            />
+          )}
+        >
+          Direita
+        </Button>
+      </View>
+
       <ThemedText style={styles.sectionTitle}>
         Switches (Interruptores)
       </ThemedText>
@@ -77,6 +110,21 @@ export function ComponentsShowcase() {
           thumbColor="#FFFFFF"
         />
       </View>
+
+      <ThemedText style={styles.sectionTitle}>Cards (Informação)</ThemedText>
+      <InfoCard
+        icon={(color) => (
+          <Icon
+            type="MaterialCommunityIcons"
+            name="information-variant"
+            color={color}
+            size={24}
+          />
+        )}
+      >
+        Este é um exemplo de InfoCard! Use-o para destacar avisos, dicas ou
+        informações importantes no app.
+      </InfoCard>
 
       <ThemedText style={styles.sectionTitle}>
         Skeletons (Carregamento)

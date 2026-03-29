@@ -26,6 +26,7 @@ export type Theme = {
     tabBar: string;
     text: string;
     border: string;
+    cardBorder: string;
     notification: string;
     placeholder: string;
     inputBackground: string;
