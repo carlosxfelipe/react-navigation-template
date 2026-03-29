@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   header: {
     paddingHorizontal: 20,
     paddingBottom: 20,
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
     gap: 4,
   },
   body: {
