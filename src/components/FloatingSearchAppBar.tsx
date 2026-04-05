@@ -24,11 +24,11 @@ type Props = {
   onTrailingTapped?: () => void;
 };
 
-export function SearchAppBar({
+export function FloatingSearchAppBar({
   value,
   onChangeText,
   placeholder = "Buscar",
-  trailingIcon = { type: "MaterialCommunityIcons", name: "bell-outline" },
+  trailingIcon = undefined,
   showBackButton = false,
   disableSafeArea = false,
   onBackTapped,
@@ -123,15 +123,17 @@ export function SearchAppBar({
       </View>
 
       {/* Ícone à direita com badge opcional */}
-      <View style={{ width: 44, height: 44, overflow: "visible" }}>
-        <PlatformPressable
-          onPress={onTrailingTapped}
-          style={[circleStyle, { width: "100%", height: "100%" }]}
-          android_ripple={{ color: "transparent", radius: 22 }}
-        >
-          <Icon {...trailingIcon} size={22} color={colors.text} />
-        </PlatformPressable>
-      </View>
+      {trailingIcon ? (
+        <View style={{ width: 44, height: 44, overflow: "visible" }}>
+          <PlatformPressable
+            onPress={onTrailingTapped}
+            style={[circleStyle, { width: "100%", height: "100%" }]}
+            android_ripple={{ color: "transparent", radius: 22 }}
+          >
+            <Icon {...trailingIcon} size={22} color={colors.text} />
+          </PlatformPressable>
+        </View>
+      ) : null}
     </View>
   );
 }

@@ -16,7 +16,7 @@ type Props = {
   onTrailingTapped?: () => void;
 };
 
-export function StandardAppBar({
+export function FloatingAppBar({
   title,
   showBackButton,
   disableSafeArea = false,
@@ -70,9 +70,7 @@ export function StandardAppBar({
             color={colors.text}
           />
         </PlatformPressable>
-      ) : (
-        <View style={{ width: 44, height: 44 }} />
-      )}
+      ) : null}
 
       {/* Cápsula de título */}
       <View
@@ -101,9 +99,7 @@ export function StandardAppBar({
         >
           <Icon {...trailingIcon} size={22} color={colors.text} />
         </PlatformPressable>
-      ) : (
-        <View style={{ width: 44, height: 44 }} />
-      )}
+      ) : null}
     </View>
   );
 }

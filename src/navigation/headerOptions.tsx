@@ -1,12 +1,18 @@
 import React, { useState } from "react";
-import { SearchAppBar } from "../components/SearchAppBar";
-import { StandardAppBar } from "../components/StandardAppBar";
+import { FloatingSearchAppBar } from "../components/FloatingSearchAppBar";
+import { FloatingAppBar } from "../components/FloatingAppBar";
 
 const TABS_WITH_HIDDEN_HEADER: string[] = ["Home Hero"];
 
-function HomeHeader() {
+function SearchHeader() {
   const [search, setSearch] = useState("");
-  return <SearchAppBar value={search} onChangeText={setSearch} />;
+  return (
+    <FloatingSearchAppBar
+      value={search}
+      onChangeText={setSearch}
+      trailingIcon={{ type: "MaterialCommunityIcons", name: "bell-outline" }}
+    />
+  );
 }
 
 export const getHeaderOptions = (tabName: string) => {
@@ -18,7 +24,7 @@ export const getHeaderOptions = (tabName: string) => {
   if (tabName === "Home") {
     return {
       headerShown: true,
-      header: () => <HomeHeader />,
+      header: () => <SearchHeader />,
     };
   }
 
@@ -26,7 +32,7 @@ export const getHeaderOptions = (tabName: string) => {
     return {
       headerShown: true,
       header: () => (
-        <StandardAppBar
+        <FloatingAppBar
           title="Sobre"
           showBackButton={false}
           trailingIcon={{

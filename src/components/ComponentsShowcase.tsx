@@ -3,9 +3,9 @@ import { StyleSheet, View } from "react-native";
 
 import { Button } from "./Button";
 import { PlatformSwitch } from "./PlatformSwitch";
-import { SearchAppBar } from "./SearchAppBar";
+import { FloatingSearchAppBar } from "./FloatingSearchAppBar";
 import { Skeleton } from "./Skeleton";
-import { StandardAppBar } from "./StandardAppBar";
+import { FloatingAppBar } from "./FloatingAppBar";
 import { ThemedText } from "./ThemedText";
 import { InfoCard } from "./InfoCard";
 import { Icon } from "./Icon";
@@ -144,12 +144,16 @@ export function ComponentsShowcase() {
       </View>
       <ThemedText style={styles.sectionTitle}>App Bars (Cabeçalho)</ThemedText>
       <View style={styles.appBarContainer}>
-        <StandardAppBar
-          title="Standard App Bar"
+        <FloatingAppBar
+          title="Floating App Bar"
           showBackButton
           disableSafeArea
         />
-        <SearchAppBar value={search} onChangeText={setSearch} disableSafeArea />
+        <FloatingSearchAppBar
+          value={search}
+          onChangeText={setSearch}
+          disableSafeArea
+        />
       </View>
     </View>
   );
