@@ -3,7 +3,9 @@ import { StyleSheet, View } from "react-native";
 
 import { Button } from "./Button";
 import { PlatformSwitch } from "./PlatformSwitch";
+import { SearchAppBar } from "./SearchAppBar";
 import { Skeleton } from "./Skeleton";
+import { StandardAppBar } from "./StandardAppBar";
 import { ThemedText } from "./ThemedText";
 import { InfoCard } from "./InfoCard";
 import { Icon } from "./Icon";
@@ -11,6 +13,7 @@ import { Icon } from "./Icon";
 export function ComponentsShowcase() {
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [marketingEnabled, setMarketingEnabled] = useState(true);
+  const [search, setSearch] = useState("");
 
   return (
     <View style={styles.container}>
@@ -139,6 +142,15 @@ export function ComponentsShowcase() {
         </View>
         <Skeleton width="100%" height={120} borderRadius={8} />
       </View>
+      <ThemedText style={styles.sectionTitle}>App Bars (Cabeçalho)</ThemedText>
+      <View style={styles.appBarContainer}>
+        <StandardAppBar
+          title="Standard App Bar"
+          showBackButton
+          disableSafeArea
+        />
+        <SearchAppBar value={search} onChangeText={setSearch} disableSafeArea />
+      </View>
     </View>
   );
 }
@@ -189,5 +201,9 @@ const styles = StyleSheet.create({
   skeletonLines: {
     gap: 8,
     flex: 1,
+  },
+  appBarContainer: {
+    marginHorizontal: -20,
+    gap: 8,
   },
 });

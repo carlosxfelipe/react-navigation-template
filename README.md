@@ -67,10 +67,11 @@ O arquivo `src/navigation/headerOptions.tsx` centraliza as opções de header ap
 ...getHeaderOptions(tab.name),
 ```
 
-permite configurar comportamentos diferentes por aba sem poluir o navegador. O arquivo define duas listas:
+permite configurar comportamentos diferentes por aba sem poluir o navegador. O array `TABS_WITH_HIDDEN_HEADER` define quais abas ocultam o header nativo (`headerShown: false`) para usar o `HeroScrollView`. As demais abas podem receber componentes de header customizados:
 
-- **`TABS_WITH_LARGE_HEADER`** — abas que usam o componente `HeroScrollView`: header colorido que rola junto com o conteúdo e desaparece ao scrollar, deixando apenas a cor primária atrás da status bar. O header nativo é ocultado (`headerShown: false`).
-- **`TABS_WITH_SEARCH_BAR`** — abas que terão um header com barra de pesquisa (a implementar).
+- **`Home Hero`** — usa `HeroScrollView`: header colorido que rola junto com o conteúdo. O header nativo é ocultado.
+- **`Home`** — usa `SearchAppBar`: barra de pesquisa com botão de ação, respeitando a safe area.
+- **`About`** — usa `StandardAppBar`: AppBar com título centralizado e botão de voltar condicional (aparece apenas quando há telas empilhadas).
 
 ### Telas de Home disponíveis
 
