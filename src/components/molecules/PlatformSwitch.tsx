@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { useRef, useEffect } from "react";
 import { useTheme } from "@react-navigation/native";
-import type { Theme as AppTheme } from "../themes";
+import type { Theme as AppTheme } from "../../themes";
 
 const TRACK_WIDTH = 50;
 const TRACK_HEIGHT = 28;

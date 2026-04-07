@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { FloatingSearchAppBar } from "../components/FloatingSearchAppBar";
-import { FloatingAppBar } from "../components/FloatingAppBar";
+import { FloatingSearchAppBar } from "../components/organisms/FloatingSearchAppBar";
+import { FloatingAppBar } from "../components/organisms/FloatingAppBar";
 
 const TABS_WITH_HIDDEN_HEADER: string[] = ["Home Hero"];
 

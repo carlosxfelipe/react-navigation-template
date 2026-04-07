@@ -12,7 +12,7 @@ import {
   ViewStyle,
 } from "react-native";
 
-import { Icon } from "./atoms/Icon";
+import { Icon } from "../atoms/Icon";
 
 const MONTH_NAMES = [
   "jan.",

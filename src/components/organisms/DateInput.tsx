@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 import { Calendar } from "./Calendar";
-import { Icon } from "./atoms/Icon";
+import { Icon } from "../atoms/Icon";
 
 type Props = {
   value?: Date;

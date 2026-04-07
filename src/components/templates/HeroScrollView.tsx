@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { ScrollView, StatusBar, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useIsFocused, useTheme } from "@react-navigation/native";
-import type { Theme as AppTheme } from "../themes";
+import type { Theme as AppTheme } from "../../themes";
 
 interface Props {
   header?: React.ReactNode;

@@ -1,7 +1,7 @@
 import { Linking, StyleSheet } from "react-native";
 import { ThemedScrollView } from "../components/atoms/ThemedScrollView";
 import { ThemedText } from "../components/atoms/ThemedText";
-import { Button } from "../components/Button";
+import { Button } from "../components/molecules/Button";
 import { Icon } from "../components/atoms/Icon";
 
 export function Home() {
@@ -25,14 +25,16 @@ export function Home() {
       <Button
         screen="Profile"
         params={{ user: "carlos" }}
-        iconLeft={(color) => <Icon type="Feather" name="user" color={color} />}
+        iconLeft={(color: string) => (
+          <Icon type="Feather" name="user" color={color} />
+        )}
       >
         Ir para o Perfil
       </Button>
 
       <Button
         screen="Settings"
-        iconRight={(color) => (
+        iconRight={(color: string) => (
           <Icon type="Ionicons" name="settings-outline" color={color} />
         )}
       >

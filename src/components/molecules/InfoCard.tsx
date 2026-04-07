@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, View, StyleProp, ViewStyle } from "react-native";
 import { useTheme } from "@react-navigation/native";
-import type { Theme as AppTheme } from "../themes";
-import { ThemedText } from "./atoms/ThemedText";
+import type { Theme as AppTheme } from "../../themes";
+import { ThemedText } from "../atoms/ThemedText";
 
 type Props = {
   icon?: (color: string) => React.ReactNode;

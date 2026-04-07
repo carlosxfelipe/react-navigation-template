@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import { HeroScrollView } from "../components/HeroScrollView";
+import { HeroScrollView } from "../components/templates/HeroScrollView";
 import { ThemedText } from "../components/atoms/ThemedText";
 import { ContrastText } from "../components/atoms/ContrastText";
 import { ComponentsShowcase } from "../components/pages/ComponentsShowcase";

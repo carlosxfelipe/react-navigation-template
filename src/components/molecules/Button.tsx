@@ -10,8 +10,8 @@ import { Platform, StyleSheet, View } from "react-native";
 import {
   PlatformPressable,
   type Props as PlatformPressableProps,
-} from "./atoms/PlatformPressable";
-import { ThemedText } from "./atoms/ThemedText";
+} from "../atoms/PlatformPressable";
+import { ThemedText } from "../atoms/ThemedText";
 
 type ButtonBaseProps = Omit<PlatformPressableProps, "children"> & {
   variant?: "plain" | "tinted" | "filled" | "outline";

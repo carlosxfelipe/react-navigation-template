@@ -9,9 +9,9 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation, useTheme } from "@react-navigation/native";
 
-import type { Theme as AppTheme } from "../themes";
-import { Icon, type IconProps } from "./atoms/Icon";
-import { PlatformPressable } from "./atoms/PlatformPressable";
+import type { Theme as AppTheme } from "../../themes";
+import { Icon, type IconProps } from "../atoms/Icon";
+import { PlatformPressable } from "../atoms/PlatformPressable";
 
 type Props = {
   value: string;

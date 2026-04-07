@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-import { Button } from "../Button";
-import { Calendar } from "../Calendar";
-import { DateInput } from "../DateInput";
-import { PlatformSwitch } from "../PlatformSwitch";
-import { FloatingSearchAppBar } from "../FloatingSearchAppBar";
+import { Button } from "../molecules/Button";
+import { Calendar } from "../organisms/Calendar";
+import { DateInput } from "../organisms/DateInput";
+import { PlatformSwitch } from "../molecules/PlatformSwitch";
+import { FloatingSearchAppBar } from "../organisms/FloatingSearchAppBar";
 import { Skeleton } from "../atoms/Skeleton";
-import { FloatingAppBar } from "../FloatingAppBar";
+import { FloatingAppBar } from "../organisms/FloatingAppBar";
 import { ThemedText } from "../atoms/ThemedText";
-import { InfoCard } from "../InfoCard";
+import { InfoCard } from "../molecules/InfoCard";
 import { Icon } from "../atoms/Icon";
 
 export function ComponentsShowcase() {
