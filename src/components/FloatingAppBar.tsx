@@ -4,8 +4,8 @@ import { useNavigation, useTheme } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import type { Theme as AppTheme } from "../themes";
-import { Icon, type IconProps } from "./Icon";
-import { PlatformPressable } from "./PlatformPressable";
+import { Icon, type IconProps } from "./atoms/Icon";
+import { PlatformPressable } from "./atoms/PlatformPressable";
 
 type Props = {
   title: string;

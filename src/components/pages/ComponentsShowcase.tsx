@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-import { Button } from "./Button";
-import { Calendar } from "./Calendar";
-import { DateInput } from "./DateInput";
-import { PlatformSwitch } from "./PlatformSwitch";
-import { FloatingSearchAppBar } from "./FloatingSearchAppBar";
-import { Skeleton } from "./Skeleton";
-import { FloatingAppBar } from "./FloatingAppBar";
-import { ThemedText } from "./ThemedText";
-import { InfoCard } from "./InfoCard";
-import { Icon } from "./Icon";
+import { Button } from "../Button";
+import { Calendar } from "../Calendar";
+import { DateInput } from "../DateInput";
+import { PlatformSwitch } from "../PlatformSwitch";
+import { FloatingSearchAppBar } from "../FloatingSearchAppBar";
+import { Skeleton } from "../atoms/Skeleton";
+import { FloatingAppBar } from "../FloatingAppBar";
+import { ThemedText } from "../atoms/ThemedText";
+import { InfoCard } from "../InfoCard";
+import { Icon } from "../atoms/Icon";
 
 export function ComponentsShowcase() {
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);

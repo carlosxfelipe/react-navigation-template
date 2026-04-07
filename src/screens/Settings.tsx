@@ -1,7 +1,7 @@
 import { Text } from "@react-navigation/elements";
 import { StyleSheet } from "react-native";
 
-import { ThemedView } from "../components/ThemedView";
+import { ThemedView } from "../components/atoms/ThemedView";
 
 export function Settings() {
   return (

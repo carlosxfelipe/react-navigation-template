@@ -1,8 +1,8 @@
 import { Linking, StyleSheet } from "react-native";
-import { ThemedScrollView } from "../components/ThemedScrollView";
-import { ThemedText } from "../components/ThemedText";
+import { ThemedScrollView } from "../components/atoms/ThemedScrollView";
+import { ThemedText } from "../components/atoms/ThemedText";
 import { Button } from "../components/Button";
-import { Icon } from "../components/Icon";
+import { Icon } from "../components/atoms/Icon";
 
 export function Home() {
   const handleOpenGithub = () => {

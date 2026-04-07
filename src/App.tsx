@@ -5,7 +5,7 @@ import * as SplashScreen from "expo-splash-screen";
 import * as React from "react";
 import { useColorScheme } from "react-native";
 import { Navigation } from "./navigation";
-import { ThemedStatusBar } from "./components/ThemedStatusBar";
+import { ThemedStatusBar } from "./components/atoms/ThemedStatusBar";
 import { DarkTheme, DefaultTheme } from "./themes";
 
 Asset.loadAsync([
