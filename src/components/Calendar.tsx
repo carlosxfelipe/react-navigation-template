@@ -82,6 +82,7 @@ function PickerModal({
   onClose: () => void;
 }) {
   const { colors, fonts } = useTheme();
+  const listRef = React.useRef<FlatList<number>>(null);
 
   return (
     <Modal
@@ -98,6 +99,7 @@ function PickerModal({
           ]}
         >
           <FlatList
+            ref={listRef}
             data={items}
             keyExtractor={(item) => String(item)}
             contentContainerStyle={styles.pickerList}
@@ -106,7 +108,12 @@ function PickerModal({
               offset: 44 * index,
               index,
             })}
-            initialScrollIndex={Math.max(0, items.indexOf(selectedValue))}
+            onLayout={() => {
+              const idx = Math.max(0, items.indexOf(selectedValue));
+              if (idx > 0) {
+                listRef.current?.scrollToIndex({ index: idx, animated: false });
+              }
+            }}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => {
               const isSelected = item === selectedValue;
@@ -220,10 +227,10 @@ export function Calendar({
 
   const minYear = firstMonth
     ? firstMonth.getFullYear()
-    : displayedMonth.getFullYear() - 50;
+    : displayedMonth.getFullYear() - 10;
   const maxYear = lastMonth
     ? lastMonth.getFullYear()
-    : displayedMonth.getFullYear() + 50;
+    : displayedMonth.getFullYear() + 10;
 
   const availableYears = Array.from(
     { length: maxYear - minYear + 1 },
