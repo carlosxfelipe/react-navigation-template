@@ -1,4 +1,3 @@
-import { useTheme } from "@react-navigation/native";
 import * as React from "react";
 import {
   Modal,
@@ -8,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 import { Calendar } from "./Calendar";
 import { Icon } from "../atoms/Icon";

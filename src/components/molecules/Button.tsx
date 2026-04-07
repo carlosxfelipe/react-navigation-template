@@ -1,11 +1,11 @@
+import * as React from "react";
+import { Platform, StyleSheet, View } from "react-native";
 import {
   type LinkProps,
   useLinkProps,
   useTheme,
 } from "@react-navigation/native";
 import Color from "color";
-import * as React from "react";
-import { Platform, StyleSheet, View } from "react-native";
 
 import {
   PlatformPressable,
@@ -35,22 +35,29 @@ export function Button<ParamList extends ReactNavigation.RootParamList>(
   props: ButtonBaseProps | ButtonLinkProps<ParamList>,
 ) {
   if ("screen" in props || "action" in props) {
-    // @ts-expect-error: This is already type-checked by the prop types
-    return <ButtonLink {...props} />;
+    return (
+      <ButtonLink
+        {...(props as ButtonLinkProps<ReactNavigation.RootParamList>)}
+      />
+    );
   } else {
     return <ButtonBase {...props} />;
   }
 }
 
-function ButtonLink<ParamList extends ReactNavigation.RootParamList>({
+function ButtonLink({
   screen,
   params,
   action,
   href,
   ...rest
-}: ButtonLinkProps<ParamList>) {
-  // @ts-expect-error: This is already type-checked by the prop types
-  const props = useLinkProps({ screen, params, action, href });
+}: ButtonLinkProps<ReactNavigation.RootParamList>) {
+  const props = useLinkProps({
+    screen,
+    params,
+    action,
+    href,
+  } as LinkProps<ReactNavigation.RootParamList>);
 
   return <ButtonBase {...rest} {...props} />;
 }

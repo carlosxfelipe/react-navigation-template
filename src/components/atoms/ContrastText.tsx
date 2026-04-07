@@ -19,7 +19,7 @@ export function ContrastText({
   style,
   backgroundColor,
   lightColor = "#FFFFFF",
-  darkColor = "#121212", // Usando um quase-preto um pouco mais suave
+  darkColor = "#121212",
   ...rest
 }: ContrastTextProps) {
   const { fonts } = useTheme();
@@ -46,7 +46,10 @@ export function ContrastText({
       // Tratamento para Hexadecimal
       hex = hex.replace("#", "");
       if (hex.length === 3) {
-        hex = hex.split("").map((c) => c + c).join("");
+        hex = hex
+          .split("")
+          .map((c) => c + c)
+          .join("");
       }
 
       if (hex.length === 6 || hex.length === 8) {
@@ -62,7 +65,7 @@ export function ContrastText({
       // Caso ocorra algum fallback por cor não reconhecida
       return darkColor;
     } catch {
-      return darkColor; // Cor padrão se algo falhar
+      return darkColor;
     }
   }, [backgroundColor, lightColor, darkColor]);
 
@@ -75,7 +78,7 @@ export function ContrastText({
           fontSize: 16,
           lineHeight: 24,
         },
-        fonts.regular, // Adicionando a fonte base do tema assim como ThemedText
+        fonts.regular,
         style,
       ]}
     />

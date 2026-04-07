@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import {
   Switch,
   SwitchProps,
@@ -6,7 +7,6 @@ import {
   StyleSheet,
   Platform,
 } from "react-native";
-import { useRef, useEffect } from "react";
 import { useTheme } from "@react-navigation/native";
 import type { Theme as AppTheme } from "../../themes";
 

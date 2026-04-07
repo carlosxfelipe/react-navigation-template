@@ -1,4 +1,3 @@
-import { useTheme } from "@react-navigation/native";
 import * as React from "react";
 import {
   FlatList,
@@ -11,6 +10,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 import { Icon } from "../atoms/Icon";
 

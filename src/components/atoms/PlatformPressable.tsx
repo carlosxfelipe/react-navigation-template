@@ -1,4 +1,3 @@
-import { useTheme } from "@react-navigation/native";
 import * as React from "react";
 import {
   Animated,
@@ -10,6 +9,7 @@ import {
   type StyleProp,
   type ViewStyle,
 } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 type HoverEffectProps = {
   color?: string;
@@ -24,7 +24,7 @@ export type Props = Omit<PressableProps, "style" | "onPress"> & {
   hoverEffect?: HoverEffectProps;
   style?: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
   onPress?: (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent> | GestureResponderEvent
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent> | GestureResponderEvent,
   ) => void;
   children: React.ReactNode;
 };
@@ -37,9 +37,6 @@ const ANDROID_SUPPORTS_RIPPLE =
 
 const useNativeDriver = Platform.OS !== "web";
 
-/**
- * PlatformPressable provides an abstraction on top of Pressable to handle platform differences.
- */
 function PlatformPressableInternal(
   {
     disabled,
@@ -54,7 +51,7 @@ function PlatformPressableInternal(
     children,
     ...rest
   }: Props,
-  ref: React.Ref<React.ComponentRef<typeof AnimatedPressable>>
+  ref: React.Ref<React.ComponentRef<typeof AnimatedPressable>>,
 ) {
   const { dark } = useTheme();
   const [opacity] = React.useState(() => new Animated.Value(1));
@@ -73,21 +70,21 @@ function PlatformPressableInternal(
   };
 
   const handlePress = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent> | GestureResponderEvent
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent> | GestureResponderEvent,
   ) => {
     if (Platform.OS === "web" && rest.href !== null) {
-      // ignore clicks with modifier keys
+      // Ignorar cliques com teclas modificadoras
       const hasModifierKey =
         ("metaKey" in e && e.metaKey) ||
         ("altKey" in e && e.altKey) ||
         ("ctrlKey" in e && e.ctrlKey) ||
         ("shiftKey" in e && e.shiftKey);
 
-      // only handle left clicks
+      // Somente tratar cliques com o botão esquerdo
       const isLeftClick =
         "button" in e ? e.button == null || e.button === 0 : true;
 
-      // let browser handle "target=_blank" etc.
+      // Deixar o browser tratar "target=_blank" etc.
       const isSelfTarget =
         e.currentTarget && "target" in e.currentTarget
           ? [undefined, null, "", "self"].includes(e.currentTarget.target)
@@ -95,8 +92,8 @@ function PlatformPressableInternal(
 
       if (!hasModifierKey && isLeftClick && isSelfTarget) {
         e.preventDefault();
-        // call `onPress` only when browser default is prevented
-        // this prevents app from handling the click when a link is being opened
+        // Chamar 'onPress' apenas quando o comportamento padrão do browser foi prevenido
+        // Isso evita que o app trate o clique quando um link está sendo aberto
         onPress?.(e);
       }
     } else {
@@ -129,8 +126,8 @@ function PlatformPressableInternal(
                 pressColor !== undefined
                   ? pressColor
                   : dark
-                  ? "rgba(255, 255, 255, .32)"
-                  : "rgba(0, 0, 0, .32)",
+                    ? "rgba(255, 255, 255, .32)"
+                    : "rgba(0, 0, 0, .32)",
               ...android_ripple,
             }
           : undefined
@@ -139,8 +136,7 @@ function PlatformPressableInternal(
         {
           cursor:
             (Platform.OS === "web" || Platform.OS === "ios") && !disabled
-              ? // Pointer cursor on web
-                // Hover effect on iPad and visionOS
+              ? // Cursor pointer na web e efeito hover no iPad/visionOS
                 "pointer"
               : "auto",
           opacity: !ANDROID_SUPPORTS_RIPPLE && !disabled ? opacity : 1,
