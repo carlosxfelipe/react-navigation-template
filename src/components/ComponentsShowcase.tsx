@@ -2,6 +2,8 @@ import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { Button } from "./Button";
+import { Calendar } from "./Calendar";
+import { DateInput } from "./DateInput";
 import { PlatformSwitch } from "./PlatformSwitch";
 import { FloatingSearchAppBar } from "./FloatingSearchAppBar";
 import { Skeleton } from "./Skeleton";
@@ -142,6 +144,10 @@ export function ComponentsShowcase() {
         </View>
         <Skeleton width="100%" height={120} borderRadius={8} />
       </View>
+      <ThemedText style={styles.sectionTitle}>Calendário</ThemedText>
+      <DateInput />
+      <Calendar />
+
       <ThemedText style={styles.sectionTitle}>App Bars (Cabeçalho)</ThemedText>
       <View style={styles.appBarContainer}>
         <FloatingAppBar
