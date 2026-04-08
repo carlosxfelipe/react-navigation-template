@@ -5,9 +5,7 @@ import { Button } from "../molecules/Button";
 import { Calendar } from "../organisms/Calendar";
 import { DateInput } from "../organisms/DateInput";
 import { PlatformSwitch } from "../molecules/PlatformSwitch";
-import { FloatingSearchAppBar } from "../organisms/FloatingSearchAppBar";
 import { Skeleton } from "../atoms/Skeleton";
-import { FloatingAppBar } from "../organisms/FloatingAppBar";
 import { ThemedText } from "../atoms/ThemedText";
 import { InfoCard } from "../molecules/InfoCard";
 import { Icon } from "../atoms/Icon";
@@ -15,7 +13,6 @@ import { Icon } from "../atoms/Icon";
 export function ComponentsShowcase() {
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [marketingEnabled, setMarketingEnabled] = useState(true);
-  const [search, setSearch] = useState("");
 
   return (
     <View style={styles.container}>
@@ -147,20 +144,6 @@ export function ComponentsShowcase() {
       <ThemedText style={styles.sectionTitle}>Calendário</ThemedText>
       <DateInput />
       <Calendar />
-
-      <ThemedText style={styles.sectionTitle}>App Bars (Cabeçalho)</ThemedText>
-      <View style={styles.appBarContainer}>
-        <FloatingAppBar
-          title="Floating App Bar"
-          showBackButton
-          disableSafeArea
-        />
-        <FloatingSearchAppBar
-          value={search}
-          onChangeText={setSearch}
-          disableSafeArea
-        />
-      </View>
     </View>
   );
 }
@@ -211,9 +194,5 @@ const styles = StyleSheet.create({
   skeletonLines: {
     gap: 8,
     flex: 1,
-  },
-  appBarContainer: {
-    marginHorizontal: -20,
-    gap: 8,
   },
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, StyleSheet, Text, View, type ViewStyle } from "react-native";
+import { Platform, StyleSheet, Text, View } from "react-native";
 import { useNavigation, useTheme } from "@react-navigation/native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -10,16 +10,14 @@ import { PlatformPressable } from "../atoms/PlatformPressable";
 type Props = {
   title: string;
   showBackButton?: boolean;
-  disableSafeArea?: boolean;
   onGoBack?: () => void;
   trailingIcon?: IconProps;
   onTrailingTapped?: () => void;
 };
 
-export function FloatingAppBar({
+export function AppBar({
   title,
   showBackButton,
-  disableSafeArea = false,
   onGoBack,
   trailingIcon,
   onTrailingTapped,
@@ -38,29 +36,22 @@ export function FloatingAppBar({
     }
   };
 
-  const circleStyle: ViewStyle = {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: colors.card,
-    borderWidth: 1,
-    borderColor: "rgba(128, 128, 128, 0.1)",
-    alignItems: "center",
-    justifyContent: "center",
-  };
-
   return (
     <View
       style={[
         styles.container,
-        { paddingTop: disableSafeArea ? 8 : insets.top + 8 },
+        {
+          backgroundColor: colors.header,
+          paddingTop: insets.top + 8,
+          borderBottomColor: colors.border,
+        },
       ]}
     >
-      {/* Botão de voltar — exibido apenas quando há telas empilhadas */}
+      {/* Botão de voltar — ou espaçador para manter simetria */}
       {canGoBack ? (
         <PlatformPressable
           onPress={handleBack}
-          style={circleStyle}
+          style={styles.iconButton}
           android_ripple={{ color: "transparent", radius: 22 }}
         >
           <Icon
@@ -70,36 +61,34 @@ export function FloatingAppBar({
             color={colors.text}
           />
         </PlatformPressable>
-      ) : null}
+      ) : (
+        <View style={styles.iconButton} />
+      )}
 
-      {/* Cápsula de título */}
-      <View
+      {/* Título centralizado */}
+      <Text
         style={[
-          styles.titleCapsule,
-          {
-            backgroundColor: colors.card,
-            borderColor: "rgba(128, 128, 128, 0.1)",
-          },
+          styles.titleText,
+          { color: colors.text },
+          Platform.OS === "android" ? fonts.heavy : fonts.bold,
         ]}
+        numberOfLines={1}
       >
-        <Text
-          style={[styles.titleText, { color: colors.text }, fonts.bold]}
-          numberOfLines={1}
-        >
-          {title}
-        </Text>
-      </View>
+        {title}
+      </Text>
 
-      {/* Ícone à direita ou espaçador invisível para manter o título centralizado */}
+      {/* Espaçador ou ícone à direita para manter simetria */}
       {trailingIcon ? (
         <PlatformPressable
           onPress={onTrailingTapped}
-          style={circleStyle}
+          style={styles.iconButton}
           android_ripple={{ color: "transparent", radius: 22 }}
         >
           <Icon {...trailingIcon} size={22} color={colors.text} />
         </PlatformPressable>
-      ) : null}
+      ) : (
+        <View style={styles.iconButton} />
+      )}
     </View>
   );
 }
@@ -111,28 +100,17 @@ const styles = StyleSheet.create({
     gap: 12,
     paddingHorizontal: 16,
     paddingBottom: 8,
-    ...Platform.select({
-      ios: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 5 },
-        shadowOpacity: 0.15,
-        shadowRadius: 10,
-      },
-      android: {
-        elevation: 4,
-      },
-    }),
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  titleCapsule: {
-    flex: 1,
+  iconButton: {
+    width: 44,
     height: 44,
-    borderRadius: 22,
-    borderWidth: 1,
     alignItems: "center",
     justifyContent: "center",
-    paddingHorizontal: 16,
   },
   titleText: {
+    flex: 1,
     fontSize: 15,
+    textAlign: "center",
   },
 });

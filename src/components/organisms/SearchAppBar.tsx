@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Platform,
-  StyleSheet,
-  TextInput,
-  View,
-  type ViewStyle,
-} from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation, useTheme } from "@react-navigation/native";
 
@@ -19,18 +13,16 @@ type Props = {
   placeholder?: string;
   trailingIcon?: IconProps;
   showBackButton?: boolean;
-  disableSafeArea?: boolean;
   onBackTapped?: () => void;
   onTrailingTapped?: () => void;
 };
 
-export function FloatingSearchAppBar({
+export function SearchAppBar({
   value,
   onChangeText,
   placeholder = "Buscar",
   trailingIcon = undefined,
   showBackButton = false,
-  disableSafeArea = false,
   onBackTapped,
   onTrailingTapped,
 }: Props) {
@@ -46,29 +38,22 @@ export function FloatingSearchAppBar({
     }
   };
 
-  const circleStyle: ViewStyle = {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: colors.card,
-    borderWidth: 1,
-    borderColor: "rgba(128, 128, 128, 0.1)",
-    alignItems: "center",
-    justifyContent: "center",
-  };
-
   return (
     <View
       style={[
         styles.container,
-        { paddingTop: disableSafeArea ? 8 : insets.top + 8 },
+        {
+          backgroundColor: colors.header,
+          paddingTop: insets.top + 8,
+          borderBottomColor: colors.border,
+        },
       ]}
     >
       {/* Botão de voltar (opcional) */}
       {showBackButton && (
         <PlatformPressable
           onPress={handleBack}
-          style={circleStyle}
+          style={styles.iconButton}
           android_ripple={{ color: "transparent", radius: 22 }}
         >
           <Icon
@@ -85,8 +70,7 @@ export function FloatingSearchAppBar({
         style={[
           styles.searchBar,
           {
-            backgroundColor: colors.card,
-            borderColor: "rgba(128, 128, 128, 0.1)",
+            backgroundColor: colors.inputBackground,
             outlineWidth: 0,
           } as any,
         ]}
@@ -124,15 +108,13 @@ export function FloatingSearchAppBar({
 
       {/* Ícone à direita com badge opcional */}
       {trailingIcon ? (
-        <View style={{ width: 44, height: 44, overflow: "visible" }}>
-          <PlatformPressable
-            onPress={onTrailingTapped}
-            style={[circleStyle, { width: "100%", height: "100%" }]}
-            android_ripple={{ color: "transparent", radius: 22 }}
-          >
-            <Icon {...trailingIcon} size={22} color={colors.text} />
-          </PlatformPressable>
-        </View>
+        <PlatformPressable
+          onPress={onTrailingTapped}
+          style={styles.iconButton}
+          android_ripple={{ color: "transparent", radius: 22 }}
+        >
+          <Icon {...trailingIcon} size={22} color={colors.text} />
+        </PlatformPressable>
       ) : null}
     </View>
   );
@@ -145,23 +127,18 @@ const styles = StyleSheet.create({
     gap: 12,
     paddingHorizontal: 16,
     paddingBottom: 8,
-    ...Platform.select({
-      ios: {
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 5 },
-        shadowOpacity: 0.15,
-        shadowRadius: 10,
-      },
-      android: {
-        elevation: 4,
-      },
-    }),
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  iconButton: {
+    width: 44,
+    height: 44,
+    alignItems: "center",
+    justifyContent: "center",
   },
   searchBar: {
     flex: 1,
     height: 44,
     borderRadius: 22,
-    borderWidth: 1,
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 14,

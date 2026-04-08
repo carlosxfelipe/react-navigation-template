@@ -1,12 +1,12 @@
-import { Text } from "@react-navigation/elements";
 import { StyleSheet } from "react-native";
+import { ThemedText } from "../components/atoms/ThemedText";
 
 import { ThemedView } from "../components/atoms/ThemedView";
 
 export function Settings() {
   return (
     <ThemedView style={styles.container}>
-      <Text>Tela de Configurações</Text>
+      <ThemedText>Tela de Configurações</ThemedText>
     </ThemedView>
   );
 }

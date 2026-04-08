@@ -1,4 +1,5 @@
-import { HeaderButton, Text } from "@react-navigation/elements";
+import { HeaderButton } from "@react-navigation/elements";
+import { ThemedText } from "../components/atoms/ThemedText";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import type { Theme as AppTheme } from "../themes";
@@ -6,6 +7,7 @@ import { HomeTabs } from "./homeTabs";
 import { NotFound } from "../screens/NotFound";
 import { Profile } from "../screens/Profile";
 import { Settings } from "../screens/Settings";
+import { AppBar } from "../components/organisms/AppBar";
 
 export const RootStack = createNativeStackNavigator({
   screenOptions: ({ theme }) => {
@@ -32,7 +34,7 @@ export const RootStack = createNativeStackNavigator({
     Profile: {
       screen: Profile,
       options: {
-        title: "Perfil",
+        header: () => <AppBar title="Perfil" />,
       },
       linking: {
         path: ":user(@[a-zA-Z0-9-_]+)",
@@ -51,7 +53,7 @@ export const RootStack = createNativeStackNavigator({
         presentation: "modal",
         headerRight: () => (
           <HeaderButton onPress={navigation.goBack}>
-            <Text>Fechar</Text>
+            <ThemedText>Fechar</ThemedText>
           </HeaderButton>
         ),
       }),

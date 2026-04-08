@@ -1,6 +1,6 @@
-import { Text } from "@react-navigation/elements";
 import { StaticScreenProps } from "@react-navigation/native";
 import { StyleSheet } from "react-native";
+import { ThemedText } from "../components/atoms/ThemedText";
 import { ThemedView } from "../components/atoms/ThemedView";
 
 type Props = StaticScreenProps<{
@@ -10,7 +10,7 @@ type Props = StaticScreenProps<{
 export function Profile({ route }: Props) {
   return (
     <ThemedView style={styles.container}>
-      <Text>Perfil de {route.params.user}</Text>
+      <ThemedText>Perfil de {route.params.user}</ThemedText>
     </ThemedView>
   );
 }

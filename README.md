@@ -4,21 +4,6 @@ Este projeto é um template minimalista para apps React Native usando Expo e Rea
 
 ## Como começar
 
-1. Clone este repositório:
-   ```sh
-   git clone https://github.com/carlosxfelipe/react-navigation-template
-   ```
-2. Entre na pasta do projeto e instale as dependências:
-   ```sh
-   cd react-navigation-template
-   npm install
-   ```
-3. Para renomear o nome do app (nome de exibição, identificadores e ajustes nativos), siga a documentação em `docs/RENOMEAR_PROJETO.md`.
-4. Para gerar APK nativo, siga `docs/GERAR_APK_NATIVO.md`.
-5. Edite `src/App.tsx` para começar a desenvolver.
-
-## Configuração Manual
-
 Caso prefira não clonar este repositório, siga os passos abaixo:
 
 1. Crie o projeto com o template do React Navigation:
@@ -57,32 +42,6 @@ Caso prefira não clonar este repositório, siga os passos abaixo:
 
 - [Documentação do React Navigation](https://reactnavigation.org/)
 - [Documentação do Expo](https://docs.expo.dev/)
-
-## Opções de Header por Aba
-
-O arquivo `src/navigation/headerOptions.tsx` centraliza as opções de header aplicadas a cada aba. Em `homeTabs.tsx`, o spread:
-
-```tsx
-// Aplica opções de header por aba (ver headerOptions.tsx)
-...getHeaderOptions(tab.name),
-```
-
-permite configurar comportamentos diferentes por aba sem poluir o navegador. O array `TABS_WITH_HIDDEN_HEADER` define quais abas ocultam o header nativo (`headerShown: false`) para usar o `HeroScrollView`. As demais abas podem receber componentes de header customizados:
-
-- **`Home Hero`** — usa `HeroScrollView`: header colorido que rola junto com o conteúdo. O header nativo é ocultado.
-- **`Home`** — sem header customizado por padrão (bloco comentado em `headerOptions.tsx`). Exemplo disponível com `FloatingSearchAppBar`.
-- **`About`** — sem header customizado por padrão (bloco comentado em `headerOptions.tsx`). Exemplo disponível com `FloatingAppBar`.
-
-Para ativar os headers flutuantes, descomente os blocos correspondentes em `src/navigation/headerOptions.tsx`.
-
-### Telas de Home disponíveis
-
-| Componente | Descrição                                          |
-| ---------- | -------------------------------------------------- |
-| `Home`     | Tela padrão com scroll simples                     |
-| `HomeHero` | Tela com `HeroScrollView`: header colorido no topo |
-
-Para alternar, basta trocar o `component` da aba desejada em `src/navigation/tabItems.ts`.
 
 ## Licença
 

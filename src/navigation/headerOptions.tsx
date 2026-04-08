@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { FloatingSearchAppBar } from "../components/organisms/FloatingSearchAppBar";
-import { FloatingAppBar } from "../components/organisms/FloatingAppBar";
+import { SearchAppBar } from "../components/organisms/SearchAppBar";
+import { AppBar } from "../components/organisms/AppBar";
 
 const TABS_WITH_HIDDEN_HEADER: string[] = ["Home Hero"];
 
 function SearchHeader() {
   const [search, setSearch] = useState("");
   return (
-    <FloatingSearchAppBar
+    <SearchAppBar
       value={search}
       onChangeText={setSearch}
       trailingIcon={{ type: "MaterialCommunityIcons", name: "bell-outline" }}
@@ -21,29 +21,29 @@ export const getHeaderOptions = (tabName: string) => {
   }
 
   // Headers customizados por aba. Para remover, basta comentar o bloco correspondente.
-  // if (tabName === "Home") {
-  //   return {
-  //     headerShown: true,
-  //     header: () => <SearchHeader />,
-  //   };
-  // }
+  if (tabName === "Home") {
+    return {
+      headerShown: true,
+      header: () => <SearchHeader />,
+    };
+  }
 
-  // if (tabName === "About") {
-  //   return {
-  //     headerShown: true,
-  //     header: () => (
-  //       <FloatingAppBar
-  //         title="Sobre"
-  //         showBackButton={false}
-  //         trailingIcon={{
-  //           type: "MaterialCommunityIcons",
-  //           name: "help-circle-outline",
-  //         }}
-  //         onTrailingTapped={() => console.log("teste")}
-  //       />
-  //     ),
-  //   };
-  // }
+  if (tabName === "About") {
+    return {
+      headerShown: true,
+      header: () => (
+        <AppBar
+          title="Sobre"
+          showBackButton={false}
+          trailingIcon={{
+            type: "MaterialCommunityIcons",
+            name: "help-circle-outline",
+          }}
+          onTrailingTapped={() => console.log("teste")}
+        />
+      ),
+    };
+  }
 
   return {};
 };
