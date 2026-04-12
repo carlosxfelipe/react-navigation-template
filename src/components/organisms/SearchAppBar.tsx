@@ -69,10 +69,7 @@ export function SearchAppBar({
       <View
         style={[
           styles.searchBar,
-          {
-            backgroundColor: colors.inputBackground,
-            outlineWidth: 0,
-          } as any,
+          { borderColor: colors.border, outlineWidth: 0 } as any,
         ]}
       >
         <Icon
@@ -138,11 +135,12 @@ const styles = StyleSheet.create({
   searchBar: {
     flex: 1,
     height: 44,
-    borderRadius: 22,
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 14,
     gap: 8,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: 8,
   },
   input: {
     flex: 1,

@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     flex: 1,
-    fontSize: 15,
+    fontSize: Platform.OS === "android" ? 20 : 17,
     textAlign: "center",
   },
 });
